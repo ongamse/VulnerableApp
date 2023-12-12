@@ -24,7 +24,7 @@ jobs:
       id: extract_branch
     # the sl analyze command below needs to have app name specified and location of js files. In addition, the container is pointing to Qwiets Registry and should be removed or edited for customers info
     - name: NextGen Static Analysis
-      run: SHIFTLEFT_ACCESS_TOKEN=2 ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app VulnerableAppJS --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js .
+      run: SHIFTLEFT_ACCESS_TOKEN=2 ${GITHUB_WORKSPACE}/sl analyze --strict --wait --verbose --app VulnerableAppJS --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --js .
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
         SHIFTLEFT_API_HOST: www.shiftleft.io
